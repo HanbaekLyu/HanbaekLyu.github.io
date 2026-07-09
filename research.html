@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research &mdash; Hanbaek Lyu</title>
+<meta name="description" content="Research highlights of Hanbaek Lyu: networks and matrix factorization, random matrices and optimal transport, box-ball systems, and coupled oscillators.">
+<link rel="stylesheet" href="css/style.css?v=light7">
+</head>
+<body>
+<a class="topbanner" href="index.html" aria-label="Hanbaek Lyu — home"></a>
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">Hanbaek Lyu</a>
+    <div class="nav-links">
+      <a href="index.html">About</a>
+      <a href="research.html" class="active">Research</a>
+      <a href="publications.html">Publications</a>
+      <a href="talks.html">Talks</a>
+      <a href="teaching.html">Teaching</a>
+      <a href="reu.html">REU</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+  <section>
+    <h2>Research</h2>
+    <p>My work studies large discrete systems &mdash; networks, random matrices, particle systems,
+      and coupled oscillators &mdash; using tools from probability, optimization, and machine learning.
+      A few themes are highlighted below.</p>
+
+    <div class="highlight">
+      <figure class="fig">
+        <img src="images/research/networks.png" alt="Network with mesoscale structure and learned latent atoms" onerror="this.onerror=null;this.src='images/research/placeholder.svg'">
+        <figcaption>Communities and recurring connection patterns learned as latent &ldquo;atoms.&rdquo;</figcaption>
+      </figure>
+      <div class="txt">
+        <h3>Learning the building blocks of networks</h3>
+        <p>Real networks are built from a small number of repeating local patterns. I develop
+          dictionary-learning methods that discover these low-rank mesoscale structures directly from
+          data, so that a large network can be summarized &mdash; and compared with others &mdash; through
+          a handful of interpretable building blocks. The same idea powers online algorithms that learn
+          from streaming and dependent (Markovian) data.</p>
+        <p class="refs"><em>Nature Communications</em> (2024) &middot; JMLR (2020, 2022, 2023) &middot;
+          <em>PLOS Computational Biology</em> (2024) &middot;
+          <em>Front. Appl. Math. Stat.</em> (2024) &middot; ITA (2020) &middot; NeurIPS OPT Workshop (2020)
+          &middot; and 2 preprints &rarr; <a href="publications.html">see publications</a></p>
+      </div>
+    </div>
+
+    <div class="highlight rev">
+      <figure class="fig">
+        <img src="images/research/optimization.png" alt="Optimization landscape with iterates converging to a stationary point" onerror="this.onerror=null;this.src='images/research/placeholder.svg'">
+        <figcaption>Iterates of a block optimization algorithm descending a nonconvex landscape.</figcaption>
+      </figure>
+      <div class="txt">
+        <h3>Machine learning and optimization</h3>
+        <p>Modern machine learning relies on optimizing nonconvex objectives with structure &mdash; blocks,
+          constraints, manifolds, and dependent data. I develop and analyze algorithms such as block
+          majorization-minimization, stochastic MM, and first-order methods under Markovian sampling,
+          proving convergence rates and complexity guarantees, with applications from supervised matrix
+          factorization to reinforcement learning and bilevel optimization.</p>
+        <p class="refs"><em>SIAM J. Optimization</em> (2025) &middot; JMLR (2024, 2026) &middot;
+          ICML (2023 &times;2, 2024 &times;4, 2025) &middot; NeurIPS (2023, 2025) &middot;
+          RL Conference (2026) &middot; <em>J. Scientific Computing</em> (2024) &middot;
+          <em>Electron. J. Probab.</em> (2026)
+          &middot; and 3 preprints &rarr; <a href="publications.html">see publications</a></p>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <figure class="fig">
+        <img src="images/research/matrices.png" alt="Matrix rescaled to have prescribed row and column margins" onerror="this.onerror=null;this.src='images/research/placeholder.svg'">
+        <figcaption>A matrix rescaled to match prescribed row and column sums.</figcaption>
+      </figure>
+      <div class="txt">
+        <h3>Random matrices, contingency tables, and optimal transport</h3>
+        <p>How does a large random matrix behave once we fix its row and column sums? I study the
+          limiting shape and fluctuations of such matrices, which connects the combinatorics of
+          contingency tables to entropic optimal transport and the Sinkhorn algorithm through the lens
+          of the Schr&ouml;dinger bridge. These results explain when the popular Sinkhorn scaling
+          converges quickly and what its output looks like at scale.</p>
+        <p class="refs"><em>Trans. Amer. Math. Soc.</em> (2020) &middot; <em>Bulletin of the LMS</em> (2022)
+          &middot; <em>Algebraic Statistics</em> (2024) &middot; ICML (2025)
+          &middot; and 2 preprints &rarr; <a href="publications.html">see publications</a></p>
+      </div>
+    </div>
+
+    <div class="highlight rev">
+      <figure class="fig">
+        <img src="images/research/solitons.png" alt="Space-time diagram of solitons in a box-ball system" onerror="this.onerror=null;this.src='images/research/placeholder.svg'">
+        <figcaption>Solitons of different sizes travel at different speeds and pass through one another.</figcaption>
+      </figure>
+      <div class="txt">
+        <h3>Solitons in box-ball systems</h3>
+        <p>The box-ball system is a simple discrete dynamical system whose randomized versions hide rich
+          probabilistic structure. I study how &ldquo;solitons&rdquo; &mdash; stable traveling patterns &mdash;
+          emerge, how long they get, and how their statistics scale as the system grows, revealing sharp
+          phase transitions and connections to integrable systems.</p>
+        <p class="refs"><em>Forum of Mathematics, Sigma</em> (2024) &middot; IMRN (2022) &middot;
+          <em>J. Stat. Phys.</em> (2019) &middot; <em>Nuclear Physics B</em> (2018)
+          &middot; and 1 preprint &rarr; <a href="publications.html">see publications</a></p>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <figure class="fig">
+        <img src="images/research/particles.png" alt="Particles diffusing, colliding, and annihilating on a lattice" onerror="this.onerror=null;this.src='images/research/placeholder.svg'">
+        <figcaption>Particles diffuse, collide, and annihilate or coalesce.</figcaption>
+      </figure>
+      <div class="txt">
+        <h3>Cellular automata and interacting particle systems</h3>
+        <p>What happens when many simple particles move, collide, and annihilate or coalesce?
+          I study the long-run behavior of such systems &mdash; ballistic annihilation, diffusion-limited
+          annihilating systems, parking processes, and cyclic/excitable cellular automata &mdash;
+          identifying phase transitions, particle-density asymptotics, and clustering behavior on
+          lattices and general graphs.</p>
+        <p class="refs"><em>Annals of Probability</em> (2023) &middot;
+          <em>Ann. Appl. Probab.</em> (2018, 2019, 2022) &middot;
+          <em>Electron. J. Probab.</em> (2023, 2025) &middot;
+          <em>Random Structures &amp; Algorithms</em> (2021) &middot; <em>Stochastic Process. Appl.</em> (2019) &middot;
+          <em>J. Stat. Phys.</em> (2018, 2024)
+          &rarr; <a href="publications.html">see publications</a></p>
+      </div>
+    </div>
+
+    <div class="highlight rev">
+      <figure class="fig">
+        <img src="images/simulations/a4c_simulation.gif" alt="Simulation of the 64-state adaptive 4-coupling on a uniform spanning tree of the Moore lattice">
+        <figcaption>The 64-state adaptive 4-coupling on a uniform spanning tree of the Moore lattice:
+          the system tries to form spirals, but none are completed by topological restriction.</figcaption>
+      </figure>
+      <div class="txt">
+        <h3>Coupled oscillators and synchronization</h3>
+        <p>From fireflies to pacemaker cells, simple oscillators that nudge their neighbors can fall into
+          collective rhythm. I study when and how fast pulse-coupled oscillators synchronize on networks,
+          proving guarantees on trees and general graphs, and using machine learning to predict
+          synchronization far beyond what classical theory anticipates.</p>
+        <p class="refs"><em>Physica D</em> (2015) &middot; <em>SIAM J. Applied Dynamical Systems</em> (2018)
+          &middot; <em>Scientific Reports</em> (2022) &middot; <em>J. Cellular Automata</em> (to appear)
+          &middot; and 2 preprints &rarr; <a href="publications.html">see publications</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  &copy; 2026 Hanbaek Lyu &middot; Department of Mathematics, University of Wisconsin&ndash;Madison
+</footer>
+</body>
+</html>

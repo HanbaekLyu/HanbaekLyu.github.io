@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+  <rect width="640" height="360" fill="#f4f4f5"/>
+  <rect x="0.5" y="0.5" width="639" height="359" fill="none" stroke="#e0e0e0"/>
+  <text x="320" y="184" font-family="Georgia, serif" font-size="18" fill="#9a9a9a" text-anchor="middle">figure from paper — to be added</text>
+</svg>

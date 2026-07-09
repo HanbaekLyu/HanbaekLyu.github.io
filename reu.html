@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>REU &mdash; Hanbaek Lyu</title>
+<meta name="description" content="Research Experiences for Undergraduates (REU) mentored by Hanbaek Lyu.">
+<link rel="stylesheet" href="css/style.css?v=light7">
+</head>
+<body>
+<a class="topbanner" href="index.html" aria-label="Hanbaek Lyu — home"></a>
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">Hanbaek Lyu</a>
+    <div class="nav-links">
+      <a href="index.html">About</a>
+      <a href="research.html">Research</a>
+      <a href="publications.html">Publications</a>
+      <a href="talks.html">Talks</a>
+      <a href="teaching.html">Teaching</a>
+      <a href="reu.html" class="active">REU</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+  <section>
+    <h2>REU</h2>
+    <p>I mentor Research Experiences for Undergraduates (REU) projects at the interface of
+      probability, optimization, machine learning, and networks. Prospective students interested
+      in undergraduate research are welcome to <a href="contact.html">get in touch</a>.</p>
+
+    <h3>Summer 2025 &middot; UW&ndash;Madison</h3>
+    <p><em>Generalized Schr&ouml;dinger Bridge and its Applications.</em>
+      Paper submitted to the International Conference on Learning Representations 2025.</p>
+    <details class="prog">
+      <summary>Program description</summary>
+      <div class="prog-body">
+        <p>The classical dynamic Schr&ouml;dinger Bridge (dSB) problem, which seeks the most likely
+          stochastic evolution between two marginal probability distributions, has been extensively
+          studied in optimal transport and statistical physics, and more recently in the machine learning
+          community due to its connections with generative modeling. The dSB is equivalent to the static
+          Schr&ouml;dinger Bridge (sSB), which can be framed as a matrix optimization problem: it seeks a
+          matrix with prescribed row and column sums that is closest to a given reference matrix. In the
+          classical setting, this closeness is measured using the Kullback-Leibler (KL) divergence, but
+          the framework can be generalized to allow any strictly increasing divergence functional.</p>
+        <p>This generalized sSB framework unifies a wide range of seemingly unrelated problems, including
+          entropic optimal transport, matrix scaling, contingency table inference, and graph realization
+          with prescribed degree sequences. Recent advances show that Sinkhorn-type algorithms for
+          generalized sSB problems exhibit fast linear convergence&mdash;even in settings without
+          closed-form updates, as in the KL divergence case. These developments open the door to tailoring
+          divergence functionals adaptively for different problem domains.</p>
+        <p>The proposed REU program will explore both practical and theoretical aspects of the generalized
+          Schr&ouml;dinger Bridge problem. On the practical side, students will begin by implementing the
+          <a href="https://proceedings.neurips.cc/paper_files/paper/2021/hash/940392f5f32a7ade1cc201767cf83e31-Abstract.html">Diffusion
+          Schr&ouml;dinger Bridge</a> and applying it to image generation tasks, such as
+          <a href="https://arxiv.org/pdf/1703.10593">unpaired image translation</a>. We will then extend
+          the framework to incorporate general divergence functionals, investigating whether this added
+          flexibility offers advantages for specific tasks. Additional experiments will include video
+          generation in a multi-marginal Schr&ouml;dinger Bridge framework.</p>
+        <p>On the theoretical side, while the generalized static SB framework connects many classical
+          problems, their dynamic counterparts have so far been studied primarily within the original dSB
+          setting. We will investigate the mathematical properties of dynamic generalizations of sSB in
+          domains such as contingency tables and graphs with prescribed degree sequences.</p>
+        <ul class="prog-meta">
+          <li><span class="k">Dates</span> June 15 &ndash; August 14, 2025</li>
+          <li><span class="k">Format</span> In-person / online at UW&ndash;Madison</li>
+          <li><span class="k">Stipend</span> $4,000</li>
+          <li><span class="k">Eligibility</span> Current UW&ndash;Madison undergraduates</li>
+        </ul>
+      </div>
+    </details>
+    <ul class="term-list">
+      <li>Ishaan Kharbanda (CS)</li>
+      <li>Xuan Ouyang (CS)</li>
+      <li>Judy Li (Math)</li>
+    </ul>
+
+    <h3>Summer 2024 &middot; UW&ndash;Madison</h3>
+    <p><em>Machine Learning on Networks.</em></p>
+    <details class="prog">
+      <summary>Program description</summary>
+      <div class="prog-body">
+        <p>Across diverse scientific domains, networks are employed to illustrate interactions within
+          complex systems. Examples abound in fields such as physics, biology, sociology, and information
+          science. Many significant scientific inquiries involve processing data on networks, where the
+          objective is to analyze a group of entities whose interactions are represented by large-scale,
+          often sparse, network data. Tasks include community detection, subgraph approximation and
+          classification, network comparison, link prediction, vertex nomination, crowd-sourced graph
+          clustering, analysis of opinion dynamics, and prediction of synchronization in coupled
+          oscillators and power networks. Consequently, there is a growing demand to devise methodologies
+          and theoretical frameworks for analyzing large datasets with network structure, where each data
+          point, often high-dimensional, represents a node in the network.</p>
+        <p>In this summer REU project, the team will take an interdisciplinary approach to investigate
+          various machine learning techniques to analyze data sets on networks. The key point will be to
+          sample a large number of small-sized instances of data with sub-network structure and learn
+          patterns from them by using various machine learning methods. We will investigate ways to
+          extract signatures from large networks and use them to predict the signature of an unknown
+          network. For instance, we may &lsquo;regress&rsquo; the SARS-Cov-2 protein-protein interaction
+          (PPI) network as a &lsquo;linear combination&rsquo; of known ones (e.g., SARS and MERS PPI
+          networks) and infer unknown characteristics or functions of the new network.</p>
+        <ul class="prog-meta">
+          <li><span class="k">Dates</span> July 1 &ndash; August 31, 2024</li>
+          <li><span class="k">Format</span> In-person at UW&ndash;Madison</li>
+          <li><span class="k">Stipend</span> $4,000</li>
+          <li><span class="k">Eligibility</span> Current UW&ndash;Madison undergraduates</li>
+        </ul>
+      </div>
+    </details>
+    <ul class="term-list">
+      <li>Pheobe Kuang &mdash; now in Ph.D. program at Northwestern</li>
+      <li>Yi Wei &mdash; now in Ph.D. program at UW Seattle</li>
+      <li>David Jiang &mdash; now at Goldman Sachs</li>
+    </ul>
+
+    <h3>Summer 2022 &middot; UW&ndash;Madison</h3>
+    <p><em>Machine Learning Approaches to Oscillator and Clock Synchronization.</em>
+      Under review in <em>Chaos: An Interdisciplinary Journal of Nonlinear Science</em>.
+      <span class="pub-links"><a href="http://arxiv.org/abs/2311.14910">[Preprint]</a></span></p>
+    <details class="prog">
+      <summary>Program description</summary>
+      <div class="prog-body">
+        <p>If a group of people is given local clocks with arbitrarily set times, and there is no global
+          reference (for example GPS), is it possible for the group to synchronize all clocks by only
+          communicating with nearby members? In order for a distributed system to be able to perform
+          high-level tasks that may go beyond the capability of an individual agent, the system must first
+          solve a &ldquo;clock synchronization&rdquo; problem to establish a shared notion of time. The
+          study of clock synchronization (or coupled oscillators) has been an important subject of
+          research in mathematics and various areas of science for decades, with fruitful applications in
+          many areas including wildfire monitoring, electric power networks, robotic vehicle networks,
+          large-scale information fusion, and wireless sensor networks. However, there has been a gap
+          between our theoretical understanding of systems of coupled oscillators and practical
+          requirements for clock synchronization algorithms in modern application contexts. This project
+          will develop systematic approaches for bridging this gap based on combinatorial, probabilistic,
+          and machine learning methods.</p>
+        <p>Suppose we are given a system of coupled oscillators on an unknown graph along with the
+          trajectory of the system during some short period. Can we predict whether the system will
+          eventually synchronize? Even with known underlying graph structure, this is an important but
+          analytically intractable question in general. In a paper resulting from a past REU project
+          (<a href="https://arxiv.org/pdf/2012.14048.pdf">L2PSync</a>), we take a novel approach that we
+          call &ldquo;learning to predict synchronization&rdquo; (L2PSync), by viewing the synchronization
+          prediction problem as a classification problem for sets of initial dynamics into two classes:
+          &lsquo;synchronizing&rsquo; or &lsquo;non-synchronizing&rsquo;. While a baseline predictor using
+          concentration principle misses a large proportion of synchronizing examples, standard binary
+          classification algorithms trained on large enough datasets of initial dynamics can successfully
+          predict the unseen future of a system on highly heterogeneous sets of unknown graphs with
+          surprising accuracy. In addition, we find that the full graph information gives only marginal
+          improvements over what we can achieve by only using the initial dynamics.</p>
+        <p>In this REU project, we will investigate various open problems in related topics. One of the
+          main open questions is why/how simple classification algorithms significantly outperform what
+          oscillator theory predicts. What kind of separation between synchronizing and non-synchronizing
+          examples do they see? Can we (humans) learn what machine learning algorithms learned from a
+          massive amount of data and use it to advance our theoretical understanding of coupled
+          oscillators? A possible approach is to use yet another class of machine learning methods of
+          supervised feature extraction to let them tell us what they see.</p>
+        <ul class="prog-meta">
+          <li><span class="k">Dates</span> July 1 &ndash; August 31, 2022</li>
+          <li><span class="k">Format</span> In-person at UW&ndash;Madison</li>
+          <li><span class="k">Stipend</span> $4,000</li>
+          <li><span class="k">Support</span> NSF DMS-2010035</li>
+        </ul>
+      </div>
+    </details>
+    <ul class="term-list">
+      <li>Agam Goyal &mdash; now in Ph.D. program at UIUC</li>
+      <li>Zhaoxing Wu &mdash; now in Ph.D. at UW Seattle</li>
+      <li>Binhao Chen &mdash; now in Ph.D. at Brown</li>
+      <li>Zihong Xu &mdash; now in Ph.D. at UW&ndash;Madison</li>
+    </ul>
+
+    <h3>Summer 2020 &middot; UCLA</h3>
+    <p><em>Machine Learning Approaches to Oscillator and Clock Synchronization.</em>
+      Published in <em>Scientific Reports</em> 12, 15056 (2022).
+      <span class="pub-links"><a href="https://www.nature.com/articles/s41598-022-18953-8">[Journal]</a> <a href="https://github.com/richpaulyim/L2PSync">[GitHub]</a></span></p>
+    <details class="prog">
+      <summary>Program description</summary>
+      <div class="prog-body">
+        <p>If a group of people is given local clocks with arbitrarily set times, and there is no global
+          reference (for example GPS), is it possible for the group to synchronize all clocks by only
+          communicating with nearby members? In order for a distributed system to be able to perform
+          high-level tasks that may go beyond the capability of an individual agent, the system must first
+          solve a &ldquo;clock synchronization&rdquo; problem to establish a shared notion of time. The
+          study of clock synchronization (or coupled oscillators) has been an important subject of
+          research in mathematics and various areas of science for decades, with fruitful applications in
+          many areas including wildfire monitoring, electric power networks, robotic vehicle networks,
+          large-scale information fusion, and wireless sensor networks. However, there has been a gap
+          between our theoretical understanding of systems of coupled oscillators and practical
+          requirements for clock synchronization algorithms in modern application contexts. This project
+          will develop systematic approaches for bridging this gap based on combinatorial and
+          probabilistic methods. The use of discrete oscillators will be a key thread in developing more
+          robust and efficient clock synchronization algorithms, extending the current proof techniques
+          for convergence guarantee, and providing a foundation for a data-driven approach to the clock
+          synchronization problems.</p>
+        <p>During the 8-weeks long summer REU 2020 project, the team will take an interdisciplinary
+          approach to the problem of oscillator and clock synchronization using some of the modern machine
+          learning techniques and a family of discrete oscillators due to the PI (called the Firefly
+          Cellular Automata).</p>
+        <ul class="prog-meta">
+          <li><span class="k">Dates</span> June 1 &ndash; August 1, 2020</li>
+          <li><span class="k">Format</span> Online (UCLA)</li>
+          <li><span class="k">Support</span> NSF DMS-2010035</li>
+        </ul>
+      </div>
+    </details>
+    <ul class="term-list">
+      <li>Hardeep Bassi &mdash; now in Ph.D. at UC Berkeley</li>
+      <li>Richard Yim &mdash; now in Ph.D. at UNC</li>
+      <li>Rohith Kodukula &mdash; now at Amazon</li>
+      <li>Joshua Vendrow &mdash; now in Ph.D. program at MIT</li>
+      <li>Cherlin Zhu &mdash; now in Ph.D. program at Columbia</li>
+    </ul>
+
+    <h3>Summer 2019 &middot; UCLA</h3>
+    <p><em>Sequence learning for topic-aware chatbot using RNN and NMF.</em>
+      <span class="pub-links"><a href="https://arxiv.org/abs/1912.00315">[Preprint]</a> <a href="https://github.com/HanbaekLyu/RNN_NMF_chatbot">[GitHub]</a></span></p>
+    <ul class="term-list">
+      <li>Henry Sojico &mdash; now at Cruise AI</li>
+      <li>Nicholas Hanoian &mdash; now at Milliman</li>
+      <li>Nicholas Liskij &mdash; now in Ph.D. program at UC Berkeley</li>
+      <li>Zhexiao Lin &mdash; now in Ph.D. program at UC Berkeley</li>
+      <li>Jiajao Quo &mdash; now in Ph.D. program at EPFL</li>
+      <li>Yuliang Wang &mdash; now in Ph.D. program at Shanghai Jiao Tong U.</li>
+      <li>Xiong Zhe &mdash; now in Ph.D. program at Shanghai Jiao Tong U.</li>
+      <li>Zhenhong Zou &mdash; now in Ph.D. program at Tsinghua U.</li>
+      <li>Yuchen Guo</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  &copy; 2026 Hanbaek Lyu &middot; Department of Mathematics, University of Wisconsin&ndash;Madison
+</footer>
+</body>
+</html>
