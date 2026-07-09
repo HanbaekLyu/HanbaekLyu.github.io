@@ -308,7 +308,8 @@ details.prog .prog-meta .k { color: var(--ink); font-weight: 600; min-width: 92p
 .highlight .txt .refs { font-size: 0.85rem; color: var(--muted); }
 @media (max-width: 680px) {
   .highlight, .highlight.rev { flex-direction: column; }
-  .highlight .fig { flex-basis: auto; width: 100%; }
+  .highlight .txt { order: 1; }   /* text first ... */
+  .highlight .fig { order: 2; flex-basis: auto; width: 100%; }  /* ... figure below it */
 }
 
 /* ===== Top FCA banner ===== */
