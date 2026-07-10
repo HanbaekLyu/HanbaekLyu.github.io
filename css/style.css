@@ -315,9 +315,9 @@ details.prog .prog-meta .k { color: var(--ink); font-weight: 600; min-width: 92p
 /* ===== Top FCA banner ===== */
 .topbanner {
   display: block;
-  height: 72px;
+  height: 60px;
   background: #000 url("../images/banner/fca_banner.png") repeat-x left center;
-  background-size: auto 72px;
+  background-size: auto 60px;
   image-rendering: pixelated;
 }
-@media (max-width: 680px) { .topbanner { height: 48px; background-size: auto 48px; } }
+@media (max-width: 680px) { .topbanner { height: 60px; background-size: auto 60px; } }
