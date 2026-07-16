@@ -1,15 +1,22 @@
 /* Rock-solid tracking of file downloads and outbound-link clicks as GoatCounter events.
- * Strategy: tracked links (files + external) are made to open in a new tab, so THIS page
- * never unloads on click and the GoatCounter event beacon always completes.
- * Events appear in the dashboard's Pages panel flagged as events, e.g.
- *     file: CV.pdf           link: arxiv.org/abs/2407.14942
- * Internal navigation links are left untouched. Depends on GoatCounter's count.js. */
+ * - External links (incl. arXiv .pdf links) record their full path, e.g.
+ *       link: arxiv.org/abs/2407.14942
+ *   so you can always tell which link/paper was clicked.
+ * - Local file downloads record the filename, e.g.  file: CV.pdf
+ * - The private GoatCounter dashboard link (the owner "Analytics" button) is ignored.
+ * Delivery uses fetch({keepalive:true}) (falls back to sendBeacon / Image) so the
+ * event completes even if the page navigates or the tab is backgrounded — mobile too.
+ * Tracked links also open in a new tab (keeps visitors on the site). */
 (function () {
   var FILE_RE = /\.(pdf|pptx?|key|zip|csv|txt|png|jpe?g|gif|svg)(\?|#|$)/i;
 
+  var sc = document.querySelector("script[data-goatcounter]");
+  var ENDPOINT = sc ? sc.getAttribute("data-goatcounter") : null;
+
   function kindOf(url) {
-    if (FILE_RE.test(url.pathname)) return "file";
-    if (url.host !== location.host) return "link";
+    if (/(^|\.)goatcounter\.com$/i.test(url.host)) return null;  // owner dashboard link
+    if (url.host !== location.host) return "link";               // external first
+    if (FILE_RE.test(url.pathname)) return "file";               // local download
     return null;
   }
   function parse(a) {
@@ -17,8 +24,19 @@
     if (!href || href.charAt(0) === "#" || /^(javascript|mailto|tel):/i.test(href)) return null;
     try { return new URL(href, location.href); } catch (_) { return null; }
   }
+  function send(path, title) {
+    if (!ENDPOINT) return;
+    var u = ENDPOINT +
+      "?p=" + encodeURIComponent(path) +
+      "&t=" + encodeURIComponent(title || path) +
+      "&e=true" +
+      "&r=" + encodeURIComponent(document.referrer || "") +
+      "&rnd=" + Math.random().toString(36).slice(2);
+    try { if (window.fetch) { fetch(u, { mode: "no-cors", keepalive: true }); return; } } catch (_) {}
+    try { if (navigator.sendBeacon) { navigator.sendBeacon(u); return; } } catch (_) {}
+    new Image().src = u;
+  }
 
-  // Make tracked links open in a new tab (so this page stays put on click).
   function markLinks() {
     var links = document.getElementsByTagName("a"), i, a, url;
     for (i = 0; i < links.length; i++) {
@@ -31,18 +49,15 @@
   if (document.readyState !== "loading") markLinks();
   else document.addEventListener("DOMContentLoaded", markLinks);
 
-  function track(path, title) {
-    if (window.goatcounter && window.goatcounter.count) {
-      window.goatcounter.count({ path: path, title: title || path, event: true });
-    }
-  }
-
   document.addEventListener("click", function (e) {
     var a = e.target.closest ? e.target.closest("a[href]") : null;
     var url = parse(a);
     if (!url) return;
     var kind = kindOf(url);
-    if (kind === "file") track("file: " + url.pathname.split("/").pop(), "Download " + url.pathname);
-    else if (kind === "link") track("link: " + url.host + url.pathname, "Outbound " + url.href);
+    if (kind === "file") {
+      send("file: " + url.pathname.split("/").pop(), "Download " + url.pathname);
+    } else if (kind === "link") {
+      send("link: " + url.host + url.pathname + url.search, "Outbound " + url.href);
+    }
   }, true);
 })();
