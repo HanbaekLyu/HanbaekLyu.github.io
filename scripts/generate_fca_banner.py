@@ -33,7 +33,7 @@ PALETTE = np.array([
 ], dtype=np.uint8)
 
 
-def simulate_4color_fca(height: int = 180, width: int = 11520, steps: int = 185, seed: int = 5) -> np.ndarray:
+def simulate_4color_fca(height: int = 180, width: int = 11520, steps: int = 2400, seed: int = 42) -> np.ndarray:
     """Run 4-color FCA on a 2D grid with periodic boundary conditions."""
     np.random.seed(seed)
     x = np.random.randint(0, 4, size=(height, width), dtype=np.int8)
@@ -51,11 +51,19 @@ def simulate_4color_fca(height: int = 180, width: int = 11520, steps: int = 185,
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="Generate 4-color FCA banner")
+    parser.add_argument("--steps", type=int, default=2400, help="Simulation steps (default: 2400)")
+    parser.add_argument("--seed", type=int, default=42, help="Random seed (default: 42)")
+    parser.add_argument("--height", type=int, default=180, help="Grid height (default: 180)")
+    parser.add_argument("--width", type=int, default=11520, help="Grid width (default: 11520)")
+    args = parser.parse_args()
+
     output_dir = os.path.join(os.path.dirname(__file__), "..", "images", "banner")
     output_path = os.path.join(output_dir, "fca_banner.png")
 
-    print("Simulating 4-color FCA (180 x 11520, 185 steps)...")
-    grid = simulate_4color_fca(height=180, width=11520, steps=185, seed=5)
+    print(f"Simulating 4-color FCA ({args.height} x {args.width}, {args.steps} steps, seed {args.seed})...")
+    grid = simulate_4color_fca(height=args.height, width=args.width, steps=args.steps, seed=args.seed)
 
     # Color distribution check
     props = [np.mean(grid == c) for c in range(4)]
