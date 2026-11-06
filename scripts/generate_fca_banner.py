@@ -33,7 +33,7 @@ PALETTE = np.array([
 ], dtype=np.uint8)
 
 
-def simulate_4color_fca(height: int = 180, width: int = 11520, steps: int = 2400, seed: int = 42) -> np.ndarray:
+def simulate_4color_fca(height: int = 180, width: int = 11520, steps: int = 600, seed: int = 42) -> np.ndarray:
     """Run 4-color FCA on a 2D grid with periodic boundary conditions."""
     np.random.seed(seed)
     x = np.random.randint(0, 4, size=(height, width), dtype=np.int8)
@@ -53,7 +53,7 @@ def simulate_4color_fca(height: int = 180, width: int = 11520, steps: int = 2400
 def main():
     import argparse
     parser = argparse.ArgumentParser(description="Generate 4-color FCA banner")
-    parser.add_argument("--steps", type=int, default=2400, help="Simulation steps (default: 2400)")
+    parser.add_argument("--steps", type=int, default=600, help="Simulation steps (default: 600)")
     parser.add_argument("--seed", type=int, default=42, help="Random seed (default: 42)")
     parser.add_argument("--height", type=int, default=180, help="Grid height (default: 180)")
     parser.add_argument("--width", type=int, default=11520, help="Grid width (default: 11520)")
