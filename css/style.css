@@ -318,7 +318,7 @@ details.prog .prog-meta .k { color: var(--ink); font-weight: 600; min-width: 92p
   height: 60px;
   overflow: hidden;
   position: relative;
-  background: #000 url("../images/banner/fca_banner.gif?v=3") repeat-x left center;
+  background: #000 url("../images/banner/fca_banner.gif?v=4") repeat-x left center;
   background-size: auto 60px;
 }
 .topbanner img {
