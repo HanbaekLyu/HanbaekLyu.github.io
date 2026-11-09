@@ -316,8 +316,13 @@ details.prog .prog-meta .k { color: var(--ink); font-weight: 600; min-width: 92p
 .topbanner {
   display: block;
   height: 60px;
-  background: #000 url("../images/banner/fca_banner.png") repeat-x left center;
+  background: #000 url("../images/banner/fca_banner.gif") repeat-x left center;
   background-size: auto 60px;
   image-rendering: pixelated;
 }
 @media (max-width: 680px) { .topbanner { height: 60px; background-size: auto 60px; } }
+@media (prefers-reduced-motion: reduce) {
+  .topbanner {
+    background-image: url("../images/banner/fca_banner.png");
+  }
+}

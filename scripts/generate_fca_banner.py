@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Generate a high-resolution, seamless 4-color Firefly Cellular Automata (FCA) banner
-for the website.
+for the website as an animated GIF (and static PNG fallback).
 
 Model: 4-color FCA on Z^2 (von Neumann neighborhood, periodic horizontal boundary).
 State space: Z_4 = {0, 1, 2, 3}.
@@ -22,65 +22,90 @@ viewport width with zero discontinuity.
 """
 
 import os
+import argparse
 import numpy as np
 from PIL import Image
 
-PALETTE = np.array([
+PALETTE_RGB = np.array([
     [48, 48, 48],    # 0: Charcoal (#303030)
     [255, 128, 0],   # 1: Orange (#ff8000)
     [255, 255, 255], # 2: White (#ffffff)
     [0, 128, 255],   # 3: Blue (#0080ff)
 ], dtype=np.uint8)
 
+PALETTE_GIF = [
+    48, 48, 48,      # 0
+    255, 128, 0,     # 1
+    255, 255, 255,   # 2
+    0, 128, 255,     # 3
+] + [0] * (768 - 12)
 
-def simulate_4color_fca(height: int = 180, width: int = 11520, steps: int = 600, seed: int = 42) -> np.ndarray:
-    """Run 4-color FCA on a 2D grid with periodic boundary conditions."""
-    np.random.seed(seed)
-    x = np.random.randint(0, 4, size=(height, width), dtype=np.int8)
+
+def fca_step(x: np.ndarray) -> np.ndarray:
+    """Perform a single step of 4-color FCA on a 2D grid with periodic boundaries."""
     b = np.int8(1)
-
-    for _ in range(steps):
-        left = np.roll(x, -1, axis=1)
-        right = np.roll(x, 1, axis=1)
-        up = np.roll(x, -1, axis=0)
-        down = np.roll(x, 1, axis=0)
-        stay = (x > b) & ((left == b) | (right == b) | (up == b) | (down == b))
-        x = np.where(stay, x, (x + 1) % 4)
-
-    return x
+    left = np.roll(x, -1, axis=1)
+    right = np.roll(x, 1, axis=1)
+    up = np.roll(x, -1, axis=0)
+    down = np.roll(x, 1, axis=0)
+    stay = (x > b) & ((left == b) | (right == b) | (up == b) | (down == b))
+    return np.where(stay, x, (x + 1) % 4)
 
 
 def main():
-    import argparse
-    parser = argparse.ArgumentParser(description="Generate 4-color FCA banner")
-    parser.add_argument("--steps", type=int, default=600, help="Simulation steps (default: 600)")
+    parser = argparse.ArgumentParser(description="Generate 4-color FCA banner (GIF & PNG)")
+    parser.add_argument("--burnin", type=int, default=600, help="Burn-in steps before recording (default: 600)")
+    parser.add_argument("--frames", type=int, default=48, help="Number of animation frames (default: 48)")
+    parser.add_argument("--duration", type=int, default=120, help="Duration per frame in ms (default: 120)")
+    parser.add_argument("--height", type=int, default=90, help="Grid height (default: 90)")
+    parser.add_argument("--width", type=int, default=2700, help="Grid width (default: 2700)")
     parser.add_argument("--seed", type=int, default=42, help="Random seed (default: 42)")
-    parser.add_argument("--height", type=int, default=180, help="Grid height (default: 180)")
-    parser.add_argument("--width", type=int, default=11520, help="Grid width (default: 11520)")
     args = parser.parse_args()
 
     output_dir = os.path.join(os.path.dirname(__file__), "..", "images", "banner")
-    output_path = os.path.join(output_dir, "fca_banner.png")
+    gif_path = os.path.join(output_dir, "fca_banner.gif")
+    png_path = os.path.join(output_dir, "fca_banner.png")
 
-    print(f"Simulating 4-color FCA ({args.height} x {args.width}, {args.steps} steps, seed {args.seed})...")
-    grid = simulate_4color_fca(height=args.height, width=args.width, steps=args.steps, seed=args.seed)
+    print(f"Simulating 4-color FCA ({args.height} x {args.width}, seed {args.seed})...")
+    np.random.seed(args.seed)
+    x = np.random.randint(0, 4, size=(args.height, args.width), dtype=np.int8)
 
-    # Color distribution check
-    props = [np.mean(grid == c) for c in range(4)]
+    print(f"Running burn-in of {args.burnin} steps to form cluster regions...")
+    for _ in range(args.burnin):
+        x = fca_step(x)
+
+    props = [np.mean(x == c) for c in range(4)]
     print(f"Color proportions: 0={props[0]:.3f}, 1={props[1]:.3f}, 2={props[2]:.3f}, 3={props[3]:.3f}")
 
-    # Verify horizontal seam continuity
-    left_col = grid[:, 0]
-    right_col = grid[:, -1]
-    seam_diff = np.mean(left_col != right_col)
-    interior_diff = np.mean(grid[:, :-1] != grid[:, 1:])
+    seam_diff = np.mean(x[:, 0] != x[:, -1])
+    interior_diff = np.mean(x[:, :-1] != x[:, 1:])
     print(f"Horizontal seam transition rate: {seam_diff:.3f} (interior average: {interior_diff:.3f})")
 
-    # Render RGB image
-    rgb = PALETTE[grid]
-    im = Image.fromarray(rgb)
-    im.save(output_path, optimize=True)
-    print(f"Saved banner to {output_path} ({os.path.getsize(output_path) / 1024:.1f} KB)")
+    # Save static PNG fallback (frame 0)
+    rgb = PALETTE_RGB[x]
+    im_static = Image.fromarray(rgb)
+    im_static.save(png_path, optimize=True)
+    print(f"Saved static PNG to {png_path} ({os.path.getsize(png_path) / 1024:.1f} KB)")
+
+    # Record animation frames
+    print(f"Recording {args.frames} animation frames ({args.duration}ms each)...")
+    frames = []
+    for _ in range(args.frames):
+        im = Image.fromarray(x.astype(np.uint8))
+        im.putpalette(PALETTE_GIF)
+        frames.append(im)
+        x = fca_step(x)
+
+    # Save animated GIF
+    frames[0].save(
+        gif_path,
+        save_all=True,
+        append_images=frames[1:],
+        duration=args.duration,
+        loop=0,
+        optimize=True,
+    )
+    print(f"Saved animated GIF to {gif_path} ({os.path.getsize(gif_path) / 1024:.1f} KB)")
 
 
 if __name__ == "__main__":
