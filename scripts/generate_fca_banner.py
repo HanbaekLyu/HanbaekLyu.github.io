@@ -57,8 +57,8 @@ def main():
     parser.add_argument("--burnin", type=int, default=600, help="Burn-in steps before recording (default: 600)")
     parser.add_argument("--frames", type=int, default=48, help="Number of animation frames (default: 48)")
     parser.add_argument("--duration", type=int, default=120, help="Duration per frame in ms (default: 120)")
-    parser.add_argument("--height", type=int, default=90, help="Grid height (default: 90)")
-    parser.add_argument("--width", type=int, default=2700, help="Grid width (default: 2700)")
+    parser.add_argument("--height", type=int, default=60, help="Grid height (default: 60)")
+    parser.add_argument("--width", type=int, default=3840, help="Grid width (default: 3840)")
     parser.add_argument("--seed", type=int, default=42, help="Random seed (default: 42)")
     args = parser.parse_args()
 
@@ -96,13 +96,14 @@ def main():
         frames.append(im)
         x = fca_step(x)
 
-    # Save animated GIF
+    # Save animated GIF (disposal=2 so frames do not accumulate or ghost)
     frames[0].save(
         gif_path,
         save_all=True,
         append_images=frames[1:],
         duration=args.duration,
         loop=0,
+        disposal=2,
         optimize=True,
     )
     print(f"Saved animated GIF to {gif_path} ({os.path.getsize(gif_path) / 1024:.1f} KB)")

@@ -316,13 +316,21 @@ details.prog .prog-meta .k { color: var(--ink); font-weight: 600; min-width: 92p
 .topbanner {
   display: block;
   height: 60px;
-  background: #000 url("../images/banner/fca_banner.gif") repeat-x left center;
+  overflow: hidden;
+  position: relative;
+  background: #000 url("../images/banner/fca_banner.gif?v=3") repeat-x left center;
   background-size: auto 60px;
+}
+.topbanner img {
+  display: block;
+  width: 100%;
+  height: 60px;
+  object-fit: cover;
+  object-position: left center;
   image-rendering: pixelated;
 }
-@media (max-width: 680px) { .topbanner { height: 60px; background-size: auto 60px; } }
-@media (prefers-reduced-motion: reduce) {
-  .topbanner {
-    background-image: url("../images/banner/fca_banner.png");
+@media (max-width: 680px) {
+  .topbanner, .topbanner img {
+    height: 60px;
   }
 }
