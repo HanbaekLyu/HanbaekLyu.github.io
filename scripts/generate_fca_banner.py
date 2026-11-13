@@ -7,10 +7,10 @@ Key design:
   - Stride = 4: samples every 4 iterations so that synchronized regions maintain their
     color phase (0 -> 1 -> 2 -> 3 -> 0) and only continuous spatial movement (wavefronts,
     domain coarsening, defect annihilation) is shown without high-frequency color flashing.
-  - Slower frame rate: 120ms per frame for smooth continuous movement.
+  - Slower frame rate: 150ms per frame for smooth continuous movement.
   - Synchronization progression: records 150 frames (600 simulation steps) starting
     from the initial state to clearly display the self-organizing synchronization behavior.
-  - End pause: holds the final synchronized state for 25 frames (3s) before looping.
+  - End pause: holds the final synchronized state for 20 frames (3s) before looping.
   - Exact 4-color palette matching the website design.
 """
 
@@ -49,8 +49,8 @@ def main():
     parser = argparse.ArgumentParser(description="Generate 4-color FCA synchronization banner")
     parser.add_argument("--frames", type=int, default=150, help="Number of sampled frames (default: 150)")
     parser.add_argument("--stride", type=int, default=4, help="FCA steps per frame (default: 4)")
-    parser.add_argument("--duration", type=int, default=120, help="Duration per frame in ms (default: 120)")
-    parser.add_argument("--hold", type=int, default=25, help="Frames to hold final synchronized state (default: 25)")
+    parser.add_argument("--duration", type=int, default=150, help="Duration per frame in ms (default: 150)")
+    parser.add_argument("--hold", type=int, default=20, help="Frames to hold final synchronized state (default: 20)")
     parser.add_argument("--height", type=int, default=60, help="Grid height (default: 60)")
     parser.add_argument("--width", type=int, default=2400, help="Grid width (default: 2400)")
     parser.add_argument("--seed", type=int, default=42, help="Random seed (default: 42)")
